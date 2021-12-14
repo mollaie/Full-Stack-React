@@ -1,0 +1,38 @@
+.reservation-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.reservation-item {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 3px dotted #cccccc;
+  padding: 1rem 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.reservation-item .title {
+  flex: 8;
+  order: 1;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+.reservation-item .status {
+  flex: 2;
+  order: 2;
+  padding: 0;
+  margin: 0 0.5rem;
+  font-size: 0.75em;
+}
+
+.reservation-item button {
+  flex: 1;
+  order: 3;
+  height: 2rem;
+  font-size: 0.75em;
+  font-weight: 600;
+}

@@ -42,6 +42,6 @@ export class UserController {
     @Param('id') id: string,
     @Req() req,
   ): Promise<ResponseDto> {
-    return await this.service.delete(id, req?.raw?.user?.id);
+    return await this.service.delete(id, req?.user?.id);
   }
 }

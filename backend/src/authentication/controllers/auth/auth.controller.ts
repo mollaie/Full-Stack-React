@@ -1,5 +1,6 @@
-import { Controller, Get, Inject, Param } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Param, Post } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { LoginDto } from 'src/authentication/models/login.dto';
 import { AuthServiceInterface } from 'src/authentication/services/auth.service.interface';
 
 @Controller('Auth')
@@ -11,11 +12,8 @@ export class AuthController {
     private readonly service: AuthServiceInterface,
   ) {}
 
-  @Get('login/:username/:password')
-  public async login(
-    @Param('username') username: string,
-    @Param('password') password: string,
-  ): Promise<string> {
-    return await this.service.login(username, password);
+  @Post('Login')
+  public async login(@Body() body: LoginDto): Promise<string> {
+    return await this.service.login(body.username, body.password);
   }
 }

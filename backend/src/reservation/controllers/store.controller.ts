@@ -27,7 +27,7 @@ export class StoreController {
     @Body() reservation: StoreDto,
     @Req() req,
   ): Promise<ResponseDto> {
-    return await this.service.create(reservation, req?.raw?.user?.id);
+    return await this.service.create(reservation, req?.user?.id);
   }
 
   @Get(':id')
@@ -37,7 +37,7 @@ export class StoreController {
 
   @Get('')
   public async findAll(@Req() req): Promise<ResponseDto> {
-    return await this.service.findAll(req?.raw?.user?.id);
+    return await this.service.findAll(req?.user?.id);
   }
 
   @Delete(':id')
@@ -45,6 +45,6 @@ export class StoreController {
     @Param('id') id: string,
     @Req() req,
   ): Promise<ResponseDto> {
-    return await this.service.delete(id, req?.raw?.user?.id);
+    return await this.service.delete(id, req?.user?.id);
   }
 }
