@@ -1,27 +1,64 @@
-import React from "react";
+import React, {
+  useCallback,
+  useEffect,
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+} from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import * as Actions from "../stores/actions";
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import Layout from "../components/layout";
 
-const CreateContainer = () => {
+const CreateContainer = forwardRef((props, ref) => {
   let navigate = useNavigate();
+
+  const formRef = useRef();
+
+  const data = useSelector((state) => state.stores);
+
+  const dispatch = useDispatch();
+
+  const loadStores = useCallback(() => {
+    async function callBack() {
+      await dispatch(Actions.fetchStores());
+    }
+    callBack();
+  }, [dispatch]);
+
+  useEffect(() => {
+    async function callBack() {
+      await loadStores();
+    }
+    callBack();
+  }, [dispatch, loadStores]);
+
+  useImperativeHandle(ref, () => ({
+    handleCreate() {
+      if (formRef.current) {
+        formRef.current.handleSubmit();
+      }
+    },
+  }));
 
   return (
     <div className="main-container">
       <Formik
-        initialValues={{ name: "", store: "" }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            setSubmitting(false);
-            navigate("/Dashboard");
-          }, 500);
+        innerRef={formRef}
+        initialValues={{ name: "", storeId: "", status: "Todo" }}
+        onSubmit={async (values, { setSubmitting }) => {
+          await dispatch(Actions.addReservation(values));
+
+          setSubmitting(false);
+
+          navigate("/");
         }}
         validationSchema={Yup.object().shape({
-          username: Yup.string().required("Required"),
-          password: Yup.string()
-            .required("Required")
-            .min(6, "Password is too short - should be 6 characters minimum"),
+          name: Yup.string().required("Required"),
+          storeId: Yup.string().required("Required"),
+          status: Yup.string().required("Required"),
         })}
       >
         {(props) => {
@@ -29,7 +66,6 @@ const CreateContainer = () => {
             values,
             touched,
             errors,
-            isSubmitting,
             handleChange,
             handleBlur,
             handleSubmit,
@@ -54,21 +90,22 @@ const CreateContainer = () => {
               </div>
 
               <div className="item-container">
-                <label htmlFor="store">Store</label>
+                <label htmlFor="storeId">Store</label>
                 <select
-                  name="store"
-                  value={values.store}
-                  onChange={handleChange}
+                  name="storeId"
+                  value={values.storeId}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={errors.username && touched.username && "error"}
+                  className={errors.storeId && touched.storeId && "error"}
                 >
-                  <option>Store A</option>
-                  <option>Store B</option>
-                  <option>Store C</option>
+                  {data.stores.map((store, i) => (
+                    <option value={store.id} key={i}>
+                      {store.name}
+                    </option>
+                  ))}
                 </select>
-                {errors.store && touched.store && (
-                  <div className="input-feedback">{errors.store}</div>
+                {errors.storeId && touched.storeId && (
+                  <div className="input-feedback">{errors.storeId}</div>
                 )}
               </div>
 
@@ -76,16 +113,16 @@ const CreateContainer = () => {
                 <label htmlFor="status">Status</label>
                 <div className="radio-container" role="group">
                   <label>
-                    <Field type="radio" name="picked" value="Todo" />
+                    <Field type="radio" name="status" value="Todo" />
                     Todo
                   </label>
                   <label>
-                    <Field type="radio" name="picked" value="In Progress" />
+                    <Field type="radio" name="status" value="In Progress" />
                     In Progress
                   </label>
 
                   <label>
-                    <Field type="radio" name="picked" value="Ready" />
+                    <Field type="radio" name="status" value="Ready" />
                     Ready
                   </label>
                 </div>
@@ -99,15 +136,17 @@ const CreateContainer = () => {
       </Formik>
     </div>
   );
-};
+});
 
 const Create = () => {
-  let props = {
-    isCreate: true,
+  const childRef = useRef();
+
+  const handleOnCreate = () => {
+    childRef.current.handleCreate();
   };
   return (
-    <Layout isCreate={true}>
-      <CreateContainer />
+    <Layout isCreate={true} onCreateClicked={handleOnCreate}>
+      <CreateContainer ref={childRef} />
     </Layout>
   );
 };

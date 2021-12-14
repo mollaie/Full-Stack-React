@@ -142,7 +142,6 @@ const Signup = ({ setSignup }) => {
                   placeholder="Please enter your password"
                   value={values.password}
                   onChange={handleChange}
-                  onChange={handleChange}
                   onBlur={handleBlur}
                   className={errors.username && touched.username && "error"}
                 />
@@ -152,7 +151,6 @@ const Signup = ({ setSignup }) => {
               </div>
               <div className="form-footer">
                 <button
-                  type="button"
                   className="btn btn-primary"
                   type="submit"
                   disabled={isSubmitting}

@@ -7,7 +7,6 @@ const Footer = (props) => {
   const navigate = useNavigate();
 
   const createReservationHandler = (e) => {
-    console.log(e);
     e.preventDefault();
 
     navigate("/Create");
@@ -22,7 +21,7 @@ const Footer = (props) => {
   const submitReservation = (e) => {
     e.preventDefault();
 
-    navigate("/");
+    props.onCreateClick();
   };
 
   const DefaultFooter = () => {
@@ -42,7 +41,11 @@ const Footer = (props) => {
           <button className="btn btn-secondary" onClick={cancelReservation}>
             Cancel
           </button>
-          <button className="btn btn-success" onClick={submitReservation}>
+          <button
+            className="btn btn-success"
+            onClick={submitReservation}
+            type="button"
+          >
             Create
           </button>
         </div>

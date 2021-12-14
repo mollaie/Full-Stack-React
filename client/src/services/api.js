@@ -19,7 +19,11 @@ export function GetHeader() {
 }
 
 export const GetStores = async () => {
-  const result = await axios.default.get(`${base_url}/Store`);
+  const headers = GetHeader();
+
+  const result = await axios.default.get(`${base_url}/Store`, {
+    headers,
+  });
 
   if (result.status === 200 && result.data["status"] === 200)
     return result.data["payload"];
@@ -41,7 +45,13 @@ export const GetReservations = async () => {
 };
 
 export const AddReservation = async (model) => {
-  const result = await axios.default.post(`${base_url}/Reservation`, model);
+  const headers = GetHeader();
+
+  const result = await axios.default.post(`${base_url}/Reservation`, model, {
+    headers,
+  });
+
+  console.log(result);
 
   if (result.status === 201 && result.data["status"] === 200)
     return result.data["payload"];
@@ -50,7 +60,11 @@ export const AddReservation = async (model) => {
 };
 
 export const RemoveReservation = async (id) => {
-  const result = await axios.default.delete(`${base_url}/Reservation/${id}`);
+  const headers = GetHeader();
+
+  const result = await axios.default.delete(`${base_url}/Reservation/${id}`, {
+    headers,
+  });
 
   if (result.status === 200) return true;
 

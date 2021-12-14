@@ -76,7 +76,6 @@ const Login = ({ setToken }) => {
                   placeholder="Please enter your password"
                   value={values.password}
                   onChange={handleChange}
-                  onChange={handleChange}
                   onBlur={handleBlur}
                   className={errors.username && touched.username && "error"}
                 />
@@ -86,7 +85,6 @@ const Login = ({ setToken }) => {
               </div>
               <div className="form-footer">
                 <button
-                  type="button"
                   className="btn btn-primary"
                   type="submit"
                   disabled={isSubmitting}

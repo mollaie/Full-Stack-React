@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
       };
 
     case ADD_RESERVATIONS:
-      let reservations = [...state];
+      let reservations = [...state.reservations];
       reservations.push(action.result);
 
       return {

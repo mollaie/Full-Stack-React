@@ -1,13 +1,17 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "../assets/styles/home.css";
 import { useSelector, useDispatch } from "react-redux";
+
+import Lottie from "react-lottie";
+import spinnerData from "../assets/lottie/spinner.json";
+
 import * as Actions from "../stores/actions";
 
 import ReservationList from "../components/reservation-list";
 import Modal from "../components/modal";
 
 const Home = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [displayModal, setDisplayModal] = useState(false);
   const [deleteMessage, setDeleteMessage] = useState("");
   const [deleteId, setDeleteId] = useState("");
@@ -16,14 +20,22 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
-  const loadReservations = useCallback(async () => {
-    await dispatch(Actions.fetchReservations());
-  }, [dispatch, setLoading]);
+  const loadReservations = useCallback(() => {
+    async function callBack() {
+      await dispatch(Actions.fetchReservations());
+    }
+    callBack();
+  }, [dispatch]);
 
-  useEffect(async () => {
-    setLoading(true);
-    await loadReservations();
-    setLoading(false);
+  useEffect(() => {
+    async function callBack() {
+      setLoading(true);
+      setTimeout(async () => {
+        await loadReservations();
+        setLoading(false);
+      }, 1000);
+    }
+    callBack();
   }, [dispatch, loadReservations]);
 
   const handleDelete = (id) => {
@@ -41,7 +53,6 @@ const Home = () => {
   };
 
   const handleConfirmDelete = async () => {
-    console.log(deleteId);
     setLoading(true);
     await dispatch(Actions.removeReservation(deleteId));
 
@@ -50,6 +61,15 @@ const Home = () => {
     setDeleteId("");
     setDisplayModal(false);
     setLoading(false);
+  };
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: spinnerData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
   };
 
   return (
@@ -62,11 +82,13 @@ const Home = () => {
           message={deleteMessage}
         />
       )}
-
-      <ReservationList
-        reservations={data.reservations}
-        onDelete={(id) => handleDelete(id)}
-      />
+      {!loading && (
+        <ReservationList
+          reservations={data.reservations}
+          onDelete={(id) => handleDelete(id)}
+        />
+      )}
+      {loading && <Lottie options={defaultOptions} height={250} width={250} />}
     </div>
   );
 };
