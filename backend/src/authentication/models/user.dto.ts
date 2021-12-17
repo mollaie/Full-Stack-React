@@ -1,7 +1,7 @@
 import { AutoMap } from '@automapper/classes';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty, MaxLength } from 'class-validator';
-import { BaseDto } from 'src/shared/models/base.dto';
+import { BaseDto } from '../../shared/models/base.dto';
 
 export class UserDto extends BaseDto {
   @AutoMap()

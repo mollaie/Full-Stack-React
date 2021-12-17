@@ -6,16 +6,16 @@ import {
 } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AutomapperModule } from '@automapper/nestjs';
-import { ReservationRepository } from 'src/repositories/reservation.repository';
-import { StoreRepository } from 'src/repositories/store.repository';
+import { ReservationRepository } from '../repositories/reservation.repository';
+import { StoreRepository } from '../repositories/store.repository';
 import { ReservationController } from './controllers/reservation.controller';
 import { ReservationEntity } from './entities/reservation.entity';
 import { StoreEntity } from './entities/store.entity';
 import { ReservationService } from './services/reservation.service';
 import { StoreService } from './services/store.service';
 import { StoreController } from './controllers/store.controller';
-import { AuthMiddleware } from 'src/authentication/auth.middleware';
-import { AuthModule } from 'src/authentication/auth.module';
+import { AuthMiddleware } from '../authentication/auth.middleware';
+import { AuthModule } from '../authentication/auth.module';
 
 @Module({
   imports: [

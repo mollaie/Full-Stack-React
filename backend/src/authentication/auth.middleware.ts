@@ -1,8 +1,8 @@
 import { HttpException } from '@nestjs/common/exceptions/http.exception';
-import { NestMiddleware, HttpStatus, Injectable, Inject } from '@nestjs/common';
+import { NestMiddleware, HttpStatus, Injectable } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
 import * as jwt from 'jsonwebtoken';
-import { SECRET } from 'src/config';
+import { SECRET } from '../config';
 import { AuthService } from './services/auth.service';
 
 @Injectable()

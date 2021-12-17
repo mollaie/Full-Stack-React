@@ -9,9 +9,9 @@ import {
   Req,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { UserDto } from 'src/authentication/models/user.dto';
-import { UserServiceInterface } from 'src/authentication/services/user.service.interface';
-import { ResponseDto } from 'src/shared/models/response.dto';
+import { UserDto } from '../../../authentication/models/user.dto';
+import { UserServiceInterface } from '../../../authentication/services/user.service.interface';
+import { ResponseDto } from '../../../shared/models/response.dto';
 
 @Controller('User')
 @ApiBearerAuth()

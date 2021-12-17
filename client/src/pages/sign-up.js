@@ -6,7 +6,13 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { SignUp as SignUpApi } from "../services/api";
 
-const signUp = async (first_name, last_name, username, email, password) => {
+const signUpAPICall = async (
+  first_name,
+  last_name,
+  username,
+  email,
+  password
+) => {
   const model = {
     first_name,
     last_name,
@@ -34,7 +40,7 @@ const Signup = ({ setSignup }) => {
         onSubmit={async (values, { setSubmitting }) => {
           console.log("Logging in", values);
 
-          const result = await signUp(
+          const result = await signUpAPICall(
             values.first_name,
             values.last_name,
             values.username,

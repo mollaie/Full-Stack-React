@@ -1,8 +1,8 @@
 import { HttpStatus, Inject, Injectable } from '@nestjs/common';
-import { ReservationRepositoryInterface } from 'src/repositories/reservation.repository.interface';
+import { ReservationRepositoryInterface } from '../../repositories/reservation.repository.interface';
 import { InjectMapper } from '@automapper/nestjs';
 import type { Mapper } from '@automapper/types';
-import { ResponseDto } from 'src/shared/models/response.dto';
+import { ResponseDto } from '../../shared/models/response.dto';
 import { ReservationEntity } from '../entities/reservation.entity';
 import { ReservationDto } from '../models/reservation.dto';
 import { ReservationServiceInterface } from './reservation.service.interface';

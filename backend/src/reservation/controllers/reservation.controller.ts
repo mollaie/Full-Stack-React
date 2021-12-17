@@ -9,7 +9,7 @@ import {
   Req,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { ResponseDto } from 'src/shared/models/response.dto';
+import { ResponseDto } from '../../shared/models/response.dto';
 import { ReservationDto } from '../models/reservation.dto';
 import { ReservationServiceInterface } from '../services/reservation.service.interface';
 

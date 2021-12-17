@@ -1,5 +1,5 @@
 import { AutoMap } from '@automapper/classes';
-import { BaseEntity } from 'src/shared/entities/base.entity';
+import { BaseEntity } from '../../shared/entities/base.entity';
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { StoreEntity } from './store.entity';
 

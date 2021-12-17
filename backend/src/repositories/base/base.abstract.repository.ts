@@ -1,4 +1,4 @@
-import { BaseEntity } from 'src/shared/entities/base.entity';
+import { BaseEntity } from '../../shared/entities/base.entity';
 import { DeleteResult, Repository } from 'typeorm';
 import { BaseInterfaceRepository } from './base.interface.repository';
 

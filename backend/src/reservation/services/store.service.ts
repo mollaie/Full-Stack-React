@@ -1,8 +1,8 @@
 import { HttpStatus, Inject, Injectable } from '@nestjs/common';
-import { StoreRepositoryInterface } from 'src/repositories/store.repository.interface';
+import { StoreRepositoryInterface } from '../../repositories/store.repository.interface';
 import { InjectMapper } from '@automapper/nestjs';
 import type { Mapper } from '@automapper/types';
-import { ResponseDto } from 'src/shared/models/response.dto';
+import { ResponseDto } from '../../shared/models/response.dto';
 import { StoreEntity } from '../entities/store.entity';
 import { StoreDto } from '../models/store.dto';
 import { StoreServiceInterface } from './store.service.interface';

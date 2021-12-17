@@ -1,4 +1,4 @@
-import { ResponseDto } from 'src/shared/models/response.dto';
+import { ResponseDto } from '../../shared/models/response.dto';
 import { UserDto } from '../models/user.dto';
 
 export interface UserServiceInterface {

@@ -9,7 +9,7 @@ import {
   Req,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { ResponseDto } from 'src/shared/models/response.dto';
+import { ResponseDto } from '../../shared/models/response.dto';
 import { StoreDto } from '../models/store.dto';
 import { StoreServiceInterface } from '../services/store.service.interface';
 

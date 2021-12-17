@@ -1,4 +1,4 @@
-import { ResponseDto } from 'src/shared/models/response.dto';
+import { ResponseDto } from '../../shared/models/response.dto';
 import { ReservationDto } from '../models/reservation.dto';
 
 export interface ReservationServiceInterface {

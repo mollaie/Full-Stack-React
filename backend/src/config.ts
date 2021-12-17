@@ -5,6 +5,7 @@ export const sqlite_connection: TypeOrmModuleOptions = {
   database: `${root}/data/line.sqlite`,
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
   synchronize: true,
+  keepConnectionAlive: true,
 };
 
 export const SECRET = 'RESERVATION_BACKEND';

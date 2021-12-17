@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
-import { SECRET } from 'src/config';
-import { UserRepositoryInterface } from 'src/repositories/user.repository.interface';
-import { compare_password, hash_password } from 'src/shared/helpers/hash';
+import { SECRET } from '../../config';
+import { UserRepositoryInterface } from '../../repositories/user.repository.interface';
+import { compare_password } from '../../shared/helpers/hash';
 import { UserEntity } from '../entities/user.entity';
 import { AuthServiceInterface } from './auth.service.interface';
 

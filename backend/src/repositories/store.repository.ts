@@ -1,5 +1,5 @@
 import { InjectRepository } from '@nestjs/typeorm';
-import { StoreEntity } from 'src/reservation/entities/store.entity';
+import { StoreEntity } from '../reservation/entities/store.entity';
 import { Repository } from 'typeorm';
 import { BaseAbstractRepository } from './base/base.abstract.repository';
 import { StoreRepositoryInterface } from './store.repository.interface';

@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sign-up test sign-up should match snapshot 1`] = `
+<div
+  className="main-container"
+>
+  <img
+    className=""
+    height="250"
+    src="login.svg"
+    width="250"
+  />
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="item-container"
+    >
+      <label
+        htmlFor="first_name"
+      >
+        First Name
+      </label>
+      <input
+        name="first_name"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Please enter your First Name"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="item-container"
+    >
+      <label
+        htmlFor="last_name"
+      >
+        Last Name
+      </label>
+      <input
+        name="last_name"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Please enter your Last Name"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="item-container"
+    >
+      <label
+        htmlFor="email"
+      >
+        Email
+      </label>
+      <input
+        name="email"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Please enter your Last Name"
+        type="email"
+        value=""
+      />
+    </div>
+    <div
+      className="item-container"
+    >
+      <label
+        htmlFor="username"
+      >
+        Username
+      </label>
+      <input
+        name="username"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Please enter your username"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="item-container"
+    >
+      <label
+        htmlFor="password"
+      >
+        Password
+      </label>
+      <input
+        name="password"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Please enter your password"
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      className="form-footer"
+    >
+      <button
+        className="btn btn-primary"
+        disabled={false}
+        type="submit"
+      >
+        Sing up
+      </button>
+      <button
+        className="btn btn-secondary"
+        onClick={[Function]}
+        type="button"
+      >
+        Login
+      </button>
+    </div>
+  </form>
+</div>
+`;

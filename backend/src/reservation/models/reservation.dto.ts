@@ -1,7 +1,7 @@
 import { AutoMap } from '@automapper/classes';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, MaxLength, MinLength } from 'class-validator';
-import { BaseDto } from 'src/shared/models/base.dto';
+import { BaseDto } from '../../shared/models/base.dto';
 import { StatusType } from '../types/status.type';
 import { StoreDto } from './store.dto';
 

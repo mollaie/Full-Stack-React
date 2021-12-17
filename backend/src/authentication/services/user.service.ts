@@ -1,12 +1,12 @@
 import { HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectMapper } from '@automapper/nestjs';
 import type { Mapper } from '@automapper/types';
-import { UserRepositoryInterface } from 'src/repositories/user.repository.interface';
-import { ResponseDto } from 'src/shared/models/response.dto';
+import { UserRepositoryInterface } from '../../repositories/user.repository.interface';
+import { ResponseDto } from '../../shared/models/response.dto';
 import { UserEntity } from '../entities/user.entity';
 import { UserDto } from '../models/user.dto';
 import { UserServiceInterface } from './user.service.interface';
-import { hash_password } from 'src/shared/helpers/hash';
+import { hash_password } from '../../shared/helpers/hash';
 
 @Injectable()
 export class UserService implements UserServiceInterface {
