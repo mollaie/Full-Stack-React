@@ -2,6 +2,9 @@ import { BaseEntity } from '../../shared/entities/base.entity';
 import { DeleteResult, Repository } from 'typeorm';
 import { BaseInterfaceRepository } from './base.interface.repository';
 
+/**
+ * Abstract repository service in case of keep all repositories pattern in a standard and commune shape
+ */
 export abstract class BaseAbstractRepository<T>
   implements BaseInterfaceRepository<T>
 {

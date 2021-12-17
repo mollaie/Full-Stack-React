@@ -6,7 +6,9 @@ import { UserEntity } from '../entities/user.entity';
 import { AuthServiceInterface } from './auth.service.interface';
 
 const jwt = require('jsonwebtoken');
-
+/**
+ * Login Service which is suppose to do Authorization and check if user is able to login or not
+ */
 @Injectable()
 export class AuthService implements AuthServiceInterface {
   constructor(
@@ -36,6 +38,11 @@ export class AuthService implements AuthServiceInterface {
     return token;
   }
 
+  /**
+   * This private function is generating Json Web Token for further communication and validation between frontend and backend
+   * @param user
+   * @returns
+   */
   private generateJWT(user: UserEntity) {
     let today = new Date();
     let exp = new Date(today);

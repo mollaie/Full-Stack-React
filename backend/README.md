@@ -71,3 +71,45 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## Design Pattern
+
+On this backend is tried to followed repository pattern and abstraction on repositories and services
+All layers are separated by different module to keep scoping
+As you might seen, all dependencies all following token injection and in Module level and determined each service is assigned to what token inside module scope
+
+as an example
+providers: [
+AuthService,
+{
+provide: 'AuthServiceInterface',
+useClass: AuthService,
+},
+{
+provide: 'UserServiceInterface',
+useClass: UserService,
+},
+{
+provide: 'UserRepositoryInterface',
+useClass: UserRepository,
+},
+],
+
+## Middleware
+
+each middleware on its scope is in charged to control authentication on each action inside defined controllers
+and all middleware are Applied on top of auth.middleware which is in charge to control if request is included token and if token is valid
+
+Note: in terms of avoiding any over complexity this application does not implemented cache or session to keep users token and information and just validate user by received token which is included expiration time
+
+Example :
+export class ReservationModule implements NestModule {
+public configure(consumer: MiddlewareConsumer) {
+consumer
+.apply(AuthMiddleware)
+.forRoutes(
+{ path: 'Reservation', method: RequestMethod.ALL },
+{ path: 'Store', method: RequestMethod.ALL },
+);
+}
+}

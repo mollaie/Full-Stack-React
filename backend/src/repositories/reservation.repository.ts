@@ -15,6 +15,11 @@ export class ReservationRepository
     super(repository);
   }
 
+  /**
+   * Extended findMay from Base Repository in case of we need to apply join as well as default select
+   * @param filter
+   * @returns
+   */
   public findMany(filter: string): Promise<ReservationEntity[]> {
     return new Promise<ReservationEntity[]>(async (resolve, reject) => {
       try {
@@ -39,6 +44,11 @@ export class ReservationRepository
     });
   }
 
+  /**
+   * Extended findOne from Base Repository in case of we need to apply join as well as default select
+   * @param id
+   * @returns
+   */
   public findOne(id: string): Promise<ReservationEntity> {
     return new Promise<ReservationEntity>(async (resolve, reject) => {
       const entity = await this.entity
